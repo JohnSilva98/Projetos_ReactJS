@@ -27,6 +27,19 @@ const quizReducer = (state, action) => {
         questions: reorderedQuestions,
       };
 
+    case "CHANGE_QUESTION":
+      const nextQuestion = state.currentQuestion + 1;
+      let endGame = false;
+
+      if (!questions[nextQuestion]) {
+        endGame = true;
+      }
+      return {
+        ...state,
+        currentQuestion: nextQuestion,
+        stage: endGame ? STAGES[2] : state.stage,
+      };
+
     default:
       return state;
   }
