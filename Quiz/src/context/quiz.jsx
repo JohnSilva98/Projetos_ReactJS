@@ -7,6 +7,7 @@ const initialStage = {
   stage: STAGES[0],
   questions,
   currentQuestion: 0,
+  score: 0,
 };
 
 const quizReducer = (state, action) => {
@@ -39,6 +40,9 @@ const quizReducer = (state, action) => {
         currentQuestion: nextQuestion,
         stage: endGame ? STAGES[2] : state.stage,
       };
+
+    case "NEW_GAME":
+      return initialStage;
 
     default:
       return state;
