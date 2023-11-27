@@ -3,5 +3,5 @@
 </div>
 
 <div>
-    <img scr ="./assets/logoreact.png" >
+    <img src="/assets/logoreact.png" height="50px">
 </div>
