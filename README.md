@@ -8,8 +8,4 @@
     <p>Os projetos são do curso de ReactJS da comunidade Hora de Codar com o professor <a href="https://github.com/matheusbattisti" target="_blank">Matheus Battisti</a></p>
 </div>
 
-## Projetos 🚀
-
-![](assets/projetos.png)
-
 [Clique aqui para acessar meu portfólio com os projetos](https://jonathansilva-portfolio.vercel.app/)
