@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider, Router } from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import NewPost from "./routes/NewPost.jsx";
 import Post from "./routes/Post.jsx";
+import Admin from "./routes/Admin.jsx";
+import EditPost from "./routes/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/posts/:id",
         element: <Post />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
+      {
+        path: "posts/edit/:id",
+        element: <EditPost />,
       },
     ],
   },
