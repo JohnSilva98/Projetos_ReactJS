@@ -31,9 +31,30 @@ POST http://localhost:3000/api/parties
 Content-Type: application/json
 
 {
-    "title": "Meu Evento",
+    "title": "Meu Evento2",
     "author": "Jonathan",
     "description": "Uma festa de aniversário",
     "budget": 9000,
-    "image": "https://images.unsplash.com/photo-1702234672110-dd24ddfd9e0b?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "image": "https://images.unsplash.com/photo-1702234672110-dd24ddfd9e0b?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "services":[
+    {
+    "name": "Serviço 1",
+    "description": "Descrição do serviço",
+    "price": 3000,
+    "image": "https://images.unsplash.com/photo-1702234672110-dd24ddfd9e0b?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        },
+    {
+    "name": "Serviço 2",
+    "description": "Descrição do serviço",
+    "price": 155,
+    "image": "https://images.unsplash.com/photo-1702234672110-dd24ddfd9e0b?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+    },
+     {
+    "name": "Serviço 3",
+    "description": "Descrição do serviço",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1702234672110-dd24ddfd9e0b?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        }
+    ]
+
 }
