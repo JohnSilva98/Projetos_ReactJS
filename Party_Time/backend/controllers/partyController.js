@@ -53,6 +53,17 @@ const partyController = {
       console.log(error);
     }
   },
+  delete: async (req, res) => {
+    const id = req.params.id;
+    const party = await PartyModel.findById(d);
+    if (!party) {
+      res.status(404).json({ msg: "A festa não foi encontrada" });
+      return;
+    }
+
+    const deletedParty = await PartyModel.findByIdAndDelete(id);
+    res.status(200).json({ deletedParty, msg: "Festa deletada!" });
+  },
 };
 
 module.exports = partyController;
