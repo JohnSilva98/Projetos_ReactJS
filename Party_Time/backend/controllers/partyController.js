@@ -19,6 +19,7 @@ const partyController = {
         image: req.body.image,
         services: req.body.services,
       };
+
       if (party.services && !checkPartyBudget(party.budget, party.services)) {
         res.status(406).json({ msg: "O seu orçamento é insuficiente!" });
         return;

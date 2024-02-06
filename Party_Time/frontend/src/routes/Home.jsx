@@ -15,7 +15,6 @@ const Home = () => {
       console.log(res);
       setParties(res.data);
     };
-
     loadParties();
   }, []);
 
