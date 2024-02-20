@@ -1,5 +1,15 @@
 const Memory = require("../models/Memory");
+const fs = require("fs");
 
+const removeOldImage = (memory) => {
+  fs.unlink(`public/${memory.src}`, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Imagem excluida do servido");
+    }
+  });
+};
 const createMemory = async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -45,8 +55,22 @@ const getMemory = async (req, res) => {
   }
 };
 
+const deleteMemory = async (req, res) => {
+  try {
+    const memory = await Memory.findByIdAndDelete(req.params.id);
+    if (!memory) {
+      return res.status(404).json({ msg: "A memória não existe!" });
+    }
+    removeOldImage(memory);
+    res.json({ msg: "Memória deletada com sucesso!" });
+  } catch (error) {
+    res.status(500).send("Ocorreu um erro!");
+  }
+};
+
 module.exports = {
   createMemory,
   getMemories,
   getMemory,
+  deleteMemory,
 };
