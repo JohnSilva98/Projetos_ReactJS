@@ -12,7 +12,7 @@ const CreateParty = () => {
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [budget, setbudget] = useState(0);
-  const [image, setimage] = useState("");
+  const [image, setImage] = useState("");
   const [partyServices, setpartyServices] = useState([]);
 
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const CreateParty = () => {
   useEffect(() => {
     const loadServices = async () => {
       const res = await partyFetch.get("/services");
-      console.log(res.data);
+
       setServices(res.data);
     };
 
@@ -33,6 +33,7 @@ const CreateParty = () => {
     const checked = e.target.checked;
     const value = e.target.value;
 
+    console.log(checked, value);
     const filteredService = services.filter((s) => s._id === value);
     console.log(filteredService);
 
@@ -117,7 +118,7 @@ const CreateParty = () => {
             type="text"
             placeholder="Insira a URL de uma imagem"
             required
-            onChange={(e) => setimage(e.target.value)}
+            onChange={(e) => setImage(e.target.value)}
             value={image}
           />
         </label>
@@ -135,7 +136,7 @@ const CreateParty = () => {
                     <input
                       type="checkbox"
                       value={service._id}
-                      onChange={(e) => handleServices}
+                      onChange={handleServices}
                     />
                     <p>Marque para solicitar</p>
                   </div>
