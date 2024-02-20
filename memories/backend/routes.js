@@ -7,7 +7,9 @@ const {
   getMemories,
   getMemory,
   deleteMemory,
+  updateMemory,
 } = require("./controllers/MemoryController");
+
 router.post(
   "/",
   upload.single("image"),
@@ -25,5 +27,9 @@ router.get("/", (req, res) => getMemories(req, res));
 router.get("/:id", (req, res) => getMemory(req, res));
 
 router.delete("/:id", (req, res) => deleteMemory(req, res));
+
+router.patch("/:id", upload.single("Image"), (req, res) =>
+  updateMemory(req, res)
+);
 
 module.exports = router;
