@@ -104,6 +104,8 @@ const updateMemory = async (req, res) => {
   }
 };
 
+const toggleFavorite = async (req, res) => {};
+
 module.exports = {
   createMemory,
   getMemories,
