@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import "./AddMemory.css";
 const addMemory = () => {
   return (
     <div className="add-memory-page">
