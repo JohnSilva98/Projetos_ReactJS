@@ -1,7 +1,8 @@
 import axios from "../axios-config";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import "./Memory.css";
 
@@ -12,6 +13,7 @@ const Memory = () => {
   const [comments, setComments] = useState([]);
   const [name, setName] = useState("");
   const [text, setText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getMemory = async () => {
@@ -22,6 +24,13 @@ const Memory = () => {
     getMemory();
   });
 
+  const deleteMemory = async () => {
+    const memory = await axios.delete(`/memories/${id}`);
+    setMemory("");
+    setComments("");
+    navigate("/");
+    toast.success("Memória  deletada com sucesso!");
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -71,6 +80,12 @@ const Memory = () => {
             ></textarea>
           </label>
           <input type="submit" value="Enviar" className="btn" />
+          <input
+            type="submit"
+            value="Excluir memória"
+            className="btn"
+            onClick={deleteMemory}
+          />
         </form>
       </div>
       <div className="comments-container">
