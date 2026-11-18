@@ -38,7 +38,7 @@ const Home = () => {
             required
           />
         </label>
-        x
+       
         <label>
           <span>Data do evento:</span>
           <input
