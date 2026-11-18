@@ -1,34 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useCountdown = (date) => {
-  const [day, setDay] = useState();
-  const [hour, setHour] = useState();
-  const [minute, setMinute] = useState();
-  const [second, setSecond] = useState();
+  const [day, setDay] = useState(0);
+  const [hour, setHour] = useState(0);
+  const [minute, setMinute] = useState(0);
+  const [second, setSecond] = useState(0);
 
-  const countdown = () => {
-    const countDate = new Date(date).getTime();
-    const now = new Date().getTime();
+  useEffect(() => {
+    if (!date) return;
 
-    const interval = countDate - now;
+    const countdown = () => {
+      // Converte a data para meia-noite no horário local
+      const [year, month, dateDay] = date.split("-").map(Number);
 
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
+      const countDate = new Date(year, month - 1, dateDay).getTime();
+      const now = new Date().getTime();
 
-    const dayNumber = Math.floor(interval / day);
-    const hourNumber = Math.floor((interval % day) / hour);
-    const minuteNumber = Math.floor((interval % hour) / minute);
-    const secondNumber = Math.floor((interval % minute) / second);
+      let interval = Math.max(0, countDate - now);
 
-    setDay(dayNumber);
-    setHour(hourNumber);
-    setMinute(minuteNumber);
-    setSecond(secondNumber);
-  };
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
 
-  setInterval(countdown, 1000);
+      const dayNumber = Math.floor(interval / day);
+      const hourNumber = Math.floor((interval % day) / hour);
+      const minuteNumber = Math.floor((interval % hour) / minute);
+      const secondNumber = Math.floor((interval % minute) / second);
+
+      setDay(dayNumber);
+      setHour(hourNumber);
+      setMinute(minuteNumber);
+      setSecond(secondNumber);
+    };
+
+    // Executa imediatamente
+    countdown();
+
+    // Atualiza a cada segundo
+    const timer = setInterval(countdown, 1000);
+
+    // Limpa o intervalo
+    return () => clearInterval(timer);
+  }, [date]);
 
   return [day, hour, minute, second];
 };
